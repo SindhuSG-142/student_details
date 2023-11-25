@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    
+  </body>
+</html>
+
+<script>
+    function student(name,roll_no,Class,section,marks_of_5_subjects)
+    { 
+        this.name=name;
+        this.roll_no=roll_no;
+        this.Class=Class;
+        this.section=section;
+        this.marks_of_5_subjects=marks_of_5_subjects;
+            
+       this.printTop3Subjects =function(){
+        let arr=Object.values(this.marks_of_5_subjects);
+        let top3=arr.sort((a,b)=>b-a).slice(0,3);
+        console.log(top3);
+         
+       }
+       this.printReportCard=function(){
+
+         let sum=0;
+         for(let i=0;i<5;i++)
+         {
+            let arr=Object.values(this.marks_of_5_subjects);
+            sum=sum+arr[i];
+         }
+         let percentage=(sum/500)*100;
+        console.log("+--------------------+");
+        console.log("|  REPORT CARD       |");
+        console.log("|Name : ",this.name,"    |");
+        console.log("|roll_no :",this.roll_no,"       |");
+        console.log("|Class: ",this.Class,"          |");
+        console.log("|section:",this.section,"         |");
+        for(let j=0;j<5;j++)
+        {
+            let arr1=this.marks_of_5_subjects;
+            let arr2=Object.values(this.marks_of_5_subjects);
+            console.log("|", arr1[j],":" ,arr2[j] ,"    |");
+        }
+        console.log("|percentage:",percentage,"   |");
+        console.log("+--------------------+");
+       }
+    }
+    let student1=new student("Huzaifa",16,"X","A",{})
+    student1.marks_of_5_subjects.science=72;
+student1.marks_of_5_subjects.maths=75;
+student1.marks_of_5_subjects.social_science=79;
+student1.marks_of_5_subjects.english=80;
+student1.marks_of_5_subjects.hindi=67;
+student1.printTop3Subjects();
+student1.printReportCard();
+    
+
+</script>
